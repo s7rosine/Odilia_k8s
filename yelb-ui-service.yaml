@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f dockerfileodilia.yml
+    kompose.version: 1.32.0 (765fde254)
+  labels:
+    io.kompose.service: yelb-ui
+  name: yelb-ui
+spec:
+  ports:
+    - name: "4555"
+      port: 4555
+      targetPort: 80
+      nodePort: 30123
+  selector:
+    io.kompose.service: yelb-ui
+  type: NodePort
